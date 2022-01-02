@@ -2,9 +2,9 @@ runtime: nodejs12
 handlers:
 # Serve all static files with url ending with a file extension
 - url: /(.*\..+)$
-  static_files: build/\1
+  static_files: frontend-artifact/\1
   upload: frontend-artifact/(.*\..+)$
 # Catch all handler to index.html
 - url: /.*
-  static_files: build/index.html
+  static_files: frontend-artifact/index.html
   upload: frontend-artifact/index.html
