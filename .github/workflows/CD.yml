@@ -55,7 +55,7 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: frontend-artifact
-        path: ${{ github.workspace }}/my-react-app/
+        path: ${{ github.workspace }}/my-react-app/frontend-artifact
       
     - id: auth
       uses: google-github-actions/auth@v0
