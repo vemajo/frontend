@@ -36,7 +36,7 @@ jobs:
       - name: Share artifact inside workflow
         uses: actions/upload-artifact@v1
         with:
-          name: build
+          name: frontend-artifact
           path: my-react-app/build
   
   deploy:
@@ -52,7 +52,8 @@ jobs:
     - name: Get artifact
       uses: actions/download-artifact@v1
       with:
-        name: build
+        name: frontend-artifact
+        path: ${{ github.workspace }}/my-react-app
       
     - id: auth
       uses: google-github-actions/auth@v0
@@ -63,7 +64,8 @@ jobs:
       id: deploy
       uses: google-github-actions/deploy-appengine@v0
       with:
-        deliverables: ${{ github.workspace }}/my-react-app/app.yml
+        working_directory: ${{ github.workspace }}/my-react-app
+        deliverables: app.yml
         promote: false
         version: v1
         
