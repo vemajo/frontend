@@ -38,5 +38,5 @@ jobs:
         promote: false
         version: 'v1'
         
-    - id: 'Test Availability'
+    - id: 'test'
       run: 'curl "${{ steps.deploy.outputs.url }}"'
