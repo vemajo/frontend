@@ -18,6 +18,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     environment: dev
+    defaults:
+      run:
+        working-directory: ./my-react-app
     permissions:
       contents: 'read'
       id-token: 'write'
