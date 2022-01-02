@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: build
-          path: build
+          path: my-react-app/build
   
   deploy:
     # The type of runner that the job will run on
