@@ -65,7 +65,7 @@ jobs:
       id: deploy
       uses: google-github-actions/deploy-appengine@v0
       with:
-        deliverables: ${{ github.workspace }}/my-react-app/app.yml
+        deliverables: my-react-app/app.yml
         promote: false
         version: v1
         
