@@ -5,6 +5,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
+    paths:
+      - '**.js'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -51,6 +53,11 @@ jobs:
     steps:
     - name: Clone repository
       uses: actions/checkout@v2
+
+    - name: Set outputs
+      id: vars
+      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)" #Generate short commit SHA
+      
     - name: Get artifact
       uses: actions/download-artifact@v1
       with:
@@ -69,7 +76,7 @@ jobs:
         working_directory: ${{ github.workspace }}/my-react-app/
         deliverables: app.yaml
         promote: false
-        version: v1
+        version: ${{ steps.vars.outputs.sha_short }}
         
     - id: test
       run: curl "${{ steps.deploy.outputs.url }}"
